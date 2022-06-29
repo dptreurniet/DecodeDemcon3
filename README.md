@@ -5,9 +5,9 @@ You are tasked with creating a Minesweeper Solver. Your Solver is presented with
 ## Minesweeper Class Interface Definition
 
 ### Functions
-#### def __init__(self, int width, int height, int number_of_mines)
-The constructor function. Automatically called by constructing an object of the MineField class.
-#### def sweep_cell(self, column, row)
+#### def __init__(self, width: int, height: int, number_of_mines: int)
+The constructor.
+#### def sweep_cell(self, column: int, row: int)
 returns the number of adjacent mines. Throws a ExplosionException if the guess was a bomb.
 
 ## Specifics

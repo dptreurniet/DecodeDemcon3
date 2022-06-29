@@ -16,4 +16,4 @@ returns the number of adjacent mines. Throws a ExplosionException if the guess w
 3.	Your solution should be able to output the location of all the bombs. If it fails, it should output the location of the bombs that it found.
 4.	We will evaluate your solutions based on inventiveness, efficiency, and good coding practices. 
 5.	We will only accept submissions in the form of a link to a Github repository. 
-6.	Please submit to ...
+6.	Please send your submission to [communication@demcon.com](mailto:communication@demcon.com).

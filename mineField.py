@@ -47,11 +47,12 @@ class MineField:
         self.__height = height
         self.__number_of_mines = number_of_mines
 
-    def __fill_mine_field(self, first_cell: Tuple[int, int]) -> None:
+    def __fill_mine_field(self, first_row, first_column) -> None:
         '''Fill the mine field, but keep the first hit cell mine-free
         
         Arguments:
-        first_cell -- Tuple (column, row). This cell shall not have a mine
+        first_row -- The cell on this row shall not have a mine
+        first_column -- The cell on this column shall not have a mine
         '''
         self.__field = [ [ CellStatus.SAFE] * self.__width for _ in range(self.__height) ]
 
@@ -62,7 +63,7 @@ class MineField:
             random_index = randrange(0, self.__width * self.__height)
             column = random_index % self.__width
             row = random_index // self.__width
-            if (row, column) != first_cell and self.__field[row][column] == CellStatus.SAFE:
+            if (row, column) != (first_row, first_column) and self.__field[row][column] == CellStatus.SAFE:
                 self.__field[row][column] = CellStatus.MINE
                 mines_left -= 1
         
@@ -87,7 +88,7 @@ class MineField:
 
         # Fill the mine field if it is not created yet
         if not self.__field:
-            self.__fill_mine_field((column, row))
+            self.__fill_mine_field(first_row=row, first_column=column)
 
         # Stepped on mine?
         if self.__field[row][column] == CellStatus.MINE:
@@ -112,7 +113,7 @@ class MineField:
         if (row > 0) and (column > 0) and (self.__field[row - 1][column - 1] == CellStatus.MINE):
             adjacent_mines += 1
         # NE
-        if (row > 0) and (column < (self.__height - 1)) and (self.__field[row - 1][column + 1] == CellStatus.MINE):
+        if (row > 0) and (column < (self.__width - 1)) and (self.__field[row - 1][column + 1] == CellStatus.MINE):
             adjacent_mines += 1
         # SE
         if (row < (self.__height - 1)) and (column < (self.__width - 1)) and (self.__field[row + 1][column + 1] == CellStatus.MINE):

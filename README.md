@@ -1,19 +1,20 @@
-# DecodeDemcon3 Challenge Description
+# DecodeDemcon3 Solution Description
 
-You are tasked with creating a Minesweeper Solver. Your Solver is presented with a MineField Object, the interface of which is defined below. The Solver will start the process with a random guess. After the first guess, the MineField object will fill in the field automatically, and return the number of mines that are adjacent to that cell. Your software will keep sweeping (In whatever way you decide is best) until it is either solved or it failed. To help you along, we have provided a MineField class for you. It generates a random MineField of a defined number of rows, columns, and number of mines. You can play Minesweeper with it by calling its member functions. You can also construct a MineField object with predefined configurations called BEGINNER_FIELD, INTERMEDIATE_FIELD and EXPERT_FIELD.
+By running main.py, a minesweeper game is played.
+The code is built for Python3, so please make sure to use this.
 
-## Minesweeper Class Interface Definition
+If no arguments are passed, a beginner field is solved (or tried to).<br/>
+Valid arguments are:<br/>
+<b>"beginner", "intermediate", "expert"</b> for corresponding field types to solve.<br />
+<b>width: int, height: int, number_of_mines: int</b> to specifiy a custom field
 
-### Functions
-#### def __init__(self, width: int, height: int, number_of_mines: int)
-The constructor.
-#### def sweep_cell(self, column: int, row: int)
-returns the number of adjacent mines. Throws a ExplosionException if the guess was a bomb.
+##Examples
+python3 main.py beginner<br/>
+python3 main.py intermediate<br/>
+python3 main.py expert<br/>
+python3 main.py 15 15 20<br/>
 
-## Specifics
-1.	Please write your solution in Python. 
-2.	Please add information (in the README) on how to execute the code.
-3.	Your solution should be able to output the location of all the bombs. If it fails, it should output the location of the bombs that it found.
-4.	We will evaluate your solutions based on inventiveness, efficiency, and good coding practices. 
-5.	We will only accept submissions in the form of a link to a Github repository. 
-6.	Please send your submission to [communication@demcon.com](mailto:communication@demcon.com).
+##Output
+The output shows the field after the game is finished. Numbers indicate cells that are opened and are not a mine. An 'x' indicates a mine that was marked and a '_' marks an unopened cell.<br/>
+A message saying 'Finished' or 'Hit a mine' will indicate how the game ended.<br/>
+Finally, a list of found mine coordinates is printed to the screen.<br/>
